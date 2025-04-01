@@ -3,17 +3,9 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const app = express();
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'tucorreo', //Tu cuenta de gmail
-    pass: 'tucontraseña' //Aqui va la contraseña que generamos en el paso anterior de gmail
-  }
-});
-
 let transporter2 = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
-  port: 465,
+  host: process.env.SMTP_SERVER,
+  port: process.env.SMTP_PORT,
   secure: true,
   auth: {
     type: 'custom',
